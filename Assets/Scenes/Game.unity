@@ -152,6 +152,7 @@ MonoBehaviour:
   enemyOnePrefab: {fileID: 8729755512266785908, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
   cloudPrefab: {fileID: 8901978872678414076, guid: 14dd4fa52784c904e83c0650f3eea560, type: 3}
   JordanEnemy: {fileID: 8729755512266785908, guid: e52100418614dda49b46d591f5b7d900, type: 3}
+  ChrisEnemy: {fileID: 8729755512266785908, guid: c37cf1d0698018f4184946e2058a08e3, type: 3}
   livesText: {fileID: 999943548}
   horizontalScreenSize: 0
   verticalScreenSize: 0
