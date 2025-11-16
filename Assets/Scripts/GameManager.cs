@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject JordanEnemy;
     public GameObject ChrisEnemy;
     public GameObject HealthPackPrefab;
+    public GameObject Coin;
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemy", 1, 3);
         InvokeRepeating("CreateJordanEnemy", 2, 4.5f);
         InvokeRepeating("CreateChrisEnemy", 3, 6f);
+
+        InvokeRepeating("CreateCoin", 2, 6);
+
         InvokeRepeating("CreateHealthPack", 1, 3);
     }
 
@@ -61,6 +65,11 @@ public class GameManager : MonoBehaviour
     void CreateHealthPack()
     {
         Instantiate(HealthPackPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
+    }
+
+    void CreateCoin()
+    {
+        Instantiate(Coin, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
     }
 
     void CreateSky()
