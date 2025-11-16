@@ -34,13 +34,12 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemy", 1, 3);
         InvokeRepeating("CreateJordanEnemy", 2, 4.5f);
         InvokeRepeating("CreateChrisEnemy", 3, 6f);
-<<<<<<< Updated upstream
 
         InvokeRepeating("CreateCoin", 2, 6);
 
-=======
+
         InvokeRepeating("CreateCoin", 2, 6);
->>>>>>> Stashed changes
+
     }
 
     // Update is called once per frame
