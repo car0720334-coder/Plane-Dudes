@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject shieldPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,20 @@ public class PlayerController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void AddALife()
+    {
+        if (lives > 0 && lives < 3)
+        {
+            lives++;   // Increase life count
+            gameManager.ChangeLivesText(lives);
+        } else if (lives == 3)
+        {
+            gameManager.AddScore(5);
+        }
+    }
+
+
 
     void Shooting()
     {
