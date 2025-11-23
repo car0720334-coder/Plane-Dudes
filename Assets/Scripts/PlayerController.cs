@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject shieldPrefab;
 
     // Start is called before the first frame update
     void Start()
