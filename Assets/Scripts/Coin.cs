@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< Updated upstream
 public class Coin: MonoBehaviour
 {
+=======
+public class Coin : MonoBehaviour
+{
+
+    public GameObject explosionPrefab;
+    
+>>>>>>> Stashed changes
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -22,8 +30,14 @@ public class Coin: MonoBehaviour
     {
         if(whatDidIHit.tag == "Player")
         {
+<<<<<<< Updated upstream
             gameManager.AddScore(10);
             Destroy(this.gameObject);
         } 
+=======
+            gameManager.AddScore(1);
+            Destroy(this.gameObject);
+        }
+>>>>>>> Stashed changes
     }
 }
