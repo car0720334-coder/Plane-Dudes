@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject cloudPrefab;
     public GameObject JordanEnemy;
     public GameObject ChrisEnemy;
+
     public GameObject HealthPackPrefab;
+
     public GameObject Coin;
     public GameObject shieldPowerUpPrefab; // Add this line
 
@@ -36,9 +38,10 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateJordanEnemy", 2, 4.5f);
         InvokeRepeating("CreateChrisEnemy", 3, 6f);
 
+
         InvokeRepeating("CreateCoin", 2, 6);
         InvokeRepeating("CreateHealthPack", 1, 3);
-        InvokeRepeating("CreateShieldPowerUp", 10f, 15f); // Add this line
+        InvokeRepeating("Coin", 1, 3);
     }
 
     // Update is called once per frame

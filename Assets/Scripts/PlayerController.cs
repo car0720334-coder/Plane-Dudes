@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject shieldPrefab;
 
     // Shield variables
     public bool hasShield = false;

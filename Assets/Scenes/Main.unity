@@ -153,10 +153,8 @@ MonoBehaviour:
   cloudPrefab: {fileID: 8901978872678414076, guid: 14dd4fa52784c904e83c0650f3eea560, type: 3}
   JordanEnemy: {fileID: 8729755512266785908, guid: e52100418614dda49b46d591f5b7d900, type: 3}
   ChrisEnemy: {fileID: 8729755512266785908, guid: c37cf1d0698018f4184946e2058a08e3, type: 3}
-<<<<<<< HEAD
-=======
   HealthPackPrefab: {fileID: 8729755512266785908, guid: e39a844bc2bd68b4fb8814f03216468b, type: 3}
->>>>>>> b2c3cda0bb159520afc4437ec19ce9566451694a
+  Coin: {fileID: 8729755512266785908, guid: f42bb2d6d8f5bdf48886d2e752537b62, type: 3}
   livesText: {fileID: 999943548}
   scoreText: {fileID: 939857860}
   horizontalScreenSize: 0
