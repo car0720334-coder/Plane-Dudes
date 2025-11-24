@@ -27,22 +27,21 @@ public class GameManager : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
-    {
-        horizontalScreenSize = 10f;
-        verticalScreenSize = 6.5f;
-        score = 0;
-        UpdateScoreText();
-        Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        CreateSky();
-        InvokeRepeating("CreateEnemy", 1, 3);
-        InvokeRepeating("CreateJordanEnemy", 2, 4.5f);
-        InvokeRepeating("CreateChrisEnemy", 3, 6f);
+{
+    horizontalScreenSize = 10f;
+    verticalScreenSize = 6.5f;
+    score = 0;
+    UpdateScoreText();
+    Instantiate(playerPrefab, transform.position, Quaternion.identity);
+    CreateSky();
+    InvokeRepeating("CreateEnemy", 1, 3);
+    InvokeRepeating("CreateJordanEnemy", 2, 4.5f);
+    InvokeRepeating("CreateChrisEnemy", 3, 6f);
 
-
-        InvokeRepeating("CreateCoin", 2, 6);
-        InvokeRepeating("CreateHealthPack", 1, 3);
-        InvokeRepeating("Coin", 1, 3);
-    }
+    InvokeRepeating("CreateCoin", 2, 6);
+    InvokeRepeating("CreateHealthPack", 1, 3);
+    InvokeRepeating("CreateShieldPowerUp", 10f, 15f); // ✅ Add this line!
+}
 
     // Update is called once per frame
     void Update()

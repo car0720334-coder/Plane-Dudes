@@ -2,14 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Coin: MonoBehaviour
 {
-
-
-
-    public GameObject explosionPrefab;
-    
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -31,8 +25,5 @@ public class Coin: MonoBehaviour
             gameManager.AddScore(10);
             Destroy(this.gameObject);
         } 
-            gameManager.AddScore(1);
-            Destroy(this.gameObject);
-        }
     }
-
+}
