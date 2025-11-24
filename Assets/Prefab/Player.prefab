@@ -202,9 +202,12 @@ MonoBehaviour:
   lives: 0
   bulletPrefab: {fileID: 8568965665149658710, guid: b1eed6253aa069845b0edf3f90db799d, type: 3}
   explosionPrefab: {fileID: 1886710396827344234, guid: e8e63456aa1d9d240ab38a0453e59388, type: 3}
+  shieldPrefab: {fileID: 0}
   hasShield: 0
   shieldVisual: {fileID: 5461903055566678764}
   shieldDuration: 5
+  shieldActivateSound: {fileID: 8300000, guid: 752ca85f206f14146942c3fcafbdd492, type: 3}
+  shieldDeactivateSound: {fileID: 8300000, guid: 86237706879f3c44db594d2c5cb1f7b3, type: 3}
 --- !u!82 &-8757797614237147667
 AudioSource:
   m_ObjectHideFlags: 0
@@ -212,7 +215,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6465214131589529892}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}

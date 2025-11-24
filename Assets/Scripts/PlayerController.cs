@@ -21,21 +21,33 @@ public class PlayerController : MonoBehaviour
     public GameObject shieldVisual; // Assign this in inspector - create a child GameObject with shield sprite
     public float shieldDuration = 5f;
 
-    // Start is called before the first frame update
+    // Shield Audio
+    public AudioClip shieldActivateSound;
+    public AudioClip shieldDeactivateSound;
+    private AudioSource audioSource;
+    
     void Start()
+{
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    lives = 3;
+    speed = 5.0f;
+    gameManager.ChangeLivesText(lives);
+
+    // Positioning Plane at bottom of screen
+    transform.position = new Vector3(0, -1.6f, 0);
+
+    // Get AudioSource component
+    audioSource = GetComponent<AudioSource>();
+    if (audioSource == null)
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        lives = 3;
-        speed = 5.0f;
-        gameManager.ChangeLivesText(lives);
-
-        //Positioning Plane at bottom of screen
-        transform.position = new Vector3(0, -1.6f, 0);
-
-        // Ensure shield is disabled at start
-        if (shieldVisual != null)
-            shieldVisual.SetActive(false);
+        // If no AudioSource exists, add one
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
+
+    // Ensure shield is disabled at start
+    if (shieldVisual != null)
+        shieldVisual.SetActive(false);
+}
 
     // Update is called once per frame
     void Update()
@@ -45,25 +57,31 @@ public class PlayerController : MonoBehaviour
     }
 
     public void LoseALife()
+{
+    if (hasShield)
     {
-        if (hasShield)
+        // Shield protects from one hit
+        hasShield = false;
+        if (shieldVisual != null)
+            shieldVisual.SetActive(false);
+        StopAllCoroutines(); // Stop the shield timer
+        
+        // Play shield deactivate sound (when hit)
+        if (shieldDeactivateSound != null && audioSource != null)
         {
-            // Shield protects from one hit
-            hasShield = false;
-            if (shieldVisual != null)
-                shieldVisual.SetActive(false);
-            StopAllCoroutines(); // Stop the shield timer
-            return;
+            audioSource.PlayOneShot(shieldDeactivateSound);
         }
-
-        lives--;
-        gameManager.ChangeLivesText(lives);
-        if (lives == 0)
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-        }
+        return;
     }
+
+    lives--;
+    gameManager.ChangeLivesText(lives);
+    if (lives == 0)
+    {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+}
 
     public void AddALife()
     {
@@ -79,28 +97,41 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ActivateShield()
+{
+    if (!hasShield)
     {
-        if (!hasShield)
+        hasShield = true;
+        if (shieldVisual != null)
+            shieldVisual.SetActive(true);
+        
+        // Play shield activate sound
+        if (shieldActivateSound != null && audioSource != null)
         {
-            hasShield = true;
-            if (shieldVisual != null)
-                shieldVisual.SetActive(true);
-            StartCoroutine(ShieldTimer());
+            audioSource.PlayOneShot(shieldActivateSound);
         }
-        else
-        {
-            // If shield already active, add points instead
-            gameManager.AddScore(10);
-        }
+        
+        StartCoroutine(ShieldTimer());
     }
+    else
+    {
+        // If shield already active, add points instead
+        gameManager.AddScore(10);
+    }
+}
 
     private IEnumerator ShieldTimer()
+{
+    yield return new WaitForSeconds(shieldDuration);
+    hasShield = false;
+    if (shieldVisual != null)
+        shieldVisual.SetActive(false);
+    
+    // Play shield deactivate sound (when timer expires)
+    if (shieldDeactivateSound != null && audioSource != null)
     {
-        yield return new WaitForSeconds(shieldDuration);
-        hasShield = false;
-        if (shieldVisual != null)
-            shieldVisual.SetActive(false);
+        audioSource.PlayOneShot(shieldDeactivateSound);
     }
+}
 
     void Shooting()
     {
