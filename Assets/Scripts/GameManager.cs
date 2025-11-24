@@ -6,7 +6,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
     public GameObject playerPrefab;
     public GameObject enemyOnePrefab;
     public GameObject cloudPrefab;
@@ -14,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject ChrisEnemy;
     public GameObject HealthPackPrefab;
     public GameObject Coin;
+    public GameObject shieldPowerUpPrefab; // Add this line
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -37,11 +37,8 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateChrisEnemy", 3, 6f);
 
         InvokeRepeating("CreateCoin", 2, 6);
-
-        InvokeRepeating("CreateCoin", 2, 6);
-
-
         InvokeRepeating("CreateHealthPack", 1, 3);
+        InvokeRepeating("CreateShieldPowerUp", 10f, 15f); // Add this line
     }
 
     // Update is called once per frame
@@ -74,6 +71,11 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(Coin, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
     }
+
+    void CreateShieldPowerUp()
+{
+    Instantiate(shieldPowerUpPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.identity);
+}
 
     void CreateSky()
     {
